@@ -1,0 +1,127 @@
+/*Color-Pallte:
+#fad586 - Background
+#d6efc7 - background 2
+#5aa897 - Main txt
+#184d47 - h1 h2 
+*/
+
+
+/*FONTS*/
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
+body {
+    background-color: #f8f5f1 !important;
+    font-family: 'Cabin', sans-serif;
+}
+
+
+h2 {
+   color: #184d47;
+}
+
+p {
+    color: #184d47;
+}
+
+#p-txt {
+    color: #fff;
+}
+
+.bg-dark {
+     background-color: #96bb7c!important;
+}
+
+img {
+    width: 500px;
+    height: 500px;
+}
+
+.logo {
+    height: 88px;
+    width: 253px;
+}
+
+.carousel-item {
+    margin-top: -69px;
+}
+
+.carousel-inner{
+    padding-bottom: 6.25vw;
+} 
+
+.btn-secondary {
+    color: #f7f5f0;
+    background-color: #174d47;
+    border-color: #fad586;
+    border-radius: 25px;
+}
+
+
+.btn-secondary:hover {
+    color: #174d47;
+    background-color: #fad586;
+    border-color: #fad586;
+    border-radius: 25px;
+}
+
+.btn-signup{
+    text-decoration: none;
+    list-style: none;
+    background-color: #f8f5f1;
+    border-radius: 26px;
+    font-weight: 600;
+    margin:8px;
+}
+
+.btn-signup:hover{
+    background-color :#184d47;
+}
+
+.btn-color {
+    color: #184d47 !important;
+}
+
+.btn-color:hover, .btn-color:focus  {
+    color: #fad586 !important;
+}
+
+.btn-primary {
+    color: #184d47;
+    background-color: #f7f5f0;
+    border-color: #f7f5f0;
+    border-radius: 25px;
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background-color: #fad586;
+    border-color: #fad586;
+
+}
+
+
+
+.footer-txt {
+    color: #fff
+}
+
+footer {
+    padding: 30px;
+    background-color: #184d47;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/***MEDIA_QOUIRES**/
+
+/*DESKTOP_LAPTOP*/
+@media (min-width: 768px){}
+.container, .container-lg, .container-md, .container-sm {
+    max-width: 1335px;
+}
+
+}
+
