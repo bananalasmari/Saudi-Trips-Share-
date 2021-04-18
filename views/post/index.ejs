@@ -1,0 +1,59 @@
+
+<style>
+  .row {
+    padding-top: 83px;
+  }
+
+  .details-label {
+    color: #94bb7b;
+    font-weight: 600;
+    font-family: system-ui;
+  }
+
+  .card {
+    border-radius: 17px;
+    position: relative;
+  }
+
+  .card-title {
+    font-size: 24px;
+    color: #1b8a7d;
+    font-weight: 900;
+}
+
+.list-group-item {
+  color: #174d47;
+}
+
+.card-img-top {
+    height: 214px; 
+}
+
+.col-md-4, .col-sm-6 {
+   margin-bottom: 15px;
+}
+
+</style>
+
+    <div class="row container">
+        <% post.forEach(function(post){ %> 
+    <div class="col-md-4 col-sm-6"> 
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="/uploads/images/<%= post.img %>"  alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= post.title %></h5>
+          <p class="card-text"><%= post.caption %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><span class="details-label">Location:</span><%= post.location %></li>
+          <li class="list-group-item"><span class="details-label">City:</span><%= post.city %></li>
+          <li class="list-group-item"><span class="details-label">Rate:</span><%= post.rate %></li>
+        </ul>
+        <div class="card-body">
+          <a href="/posts/detail?id=<%= post._id %>" class="card-link">Card link</a>
+          <a href="#" class="card-link">Like</a>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+    </div>

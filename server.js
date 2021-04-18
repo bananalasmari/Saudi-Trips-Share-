@@ -17,6 +17,8 @@ app.use(express.static("public"));
 // 1- Import Routes
 const indexRoute = require('./routes/index');
 const authRoute = require('./routes/auth');
+const postRoute = require('./routes/post');
+const profileRoute = require('./routes/profile');
 
 // Express Session and Passport
 let session = require('express-session');
@@ -26,7 +28,7 @@ app.use(session({
   secret: process.env.SECRET, //used for sesstion managment - check sesstion id secret key, if its valid or end sesstion 
   saveUninitialized: true, //warinigs
   resave: false,//warinigs
-  cookie: {maxAge: 360000} //sesstion duration time
+  cookie: {maxAge: 36000000000000000000} //sesstion duration time
 }))
 
 // Initialize Passport and Passport Session
@@ -45,6 +47,8 @@ app.use(function(req, res, next){
 // 2-  Mount Routes - include index.js to browser
 app.use('/', indexRoute);
 app.use('/', authRoute);
+app.use('/', postRoute);
+app.use('/', profileRoute);
 
 
 // Setting view engine to ejs.

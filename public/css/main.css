@@ -8,9 +8,15 @@
 /*FONTS*/
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: #f8f5f1 !important;
     font-family: 'Cabin', sans-serif;
+    min-height:100%; position:relative;
+
 }
 
 
@@ -104,6 +110,7 @@ img {
 
 }
 
+
 .fa-sign-out-alt, .fa-user {
     color: #fff;
     font-size: 20px;
@@ -116,6 +123,11 @@ img {
 
 }
 
+.user-info a {
+    color: #fff;
+    text-decoration: none;
+}
+
 
 .footer-txt {
     color: #fff
@@ -124,11 +136,18 @@ img {
 footer {
     padding: 30px;
     background-color: #184d47;
+    height: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
 }
 
 footer a {
     color: #fff;
     text-decoration: none;
+
+
 }
 
 /***MEDIA_QOUIRES**/
