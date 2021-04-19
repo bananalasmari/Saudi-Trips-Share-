@@ -37,12 +37,13 @@
 
     <div class="row container">
         <% post.forEach(function(post){ %> 
-    <div class="col-md-4 col-sm-6"> 
+    <div class="col-md-4 col-sm-6" data-aos="fade-up"> 
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="/uploads/images/<%= post.img %>"  alt="Card image cap">
+        <img class="card-img-top" src="<%=post.img %>"  alt="Card image cap">
         <div class="card-body">
+          <h1><%=post.user%></h1>
           <h5 class="card-title"><%= post.title %></h5>
-          <p class="card-text"><%= post.caption %></p>
+        <p class="card-text"><%= post.caption %></p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><span class="details-label">Location:</span><%= post.location %></li>

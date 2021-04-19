@@ -14,6 +14,50 @@
     }
 
 
+    option :disabled {
+        color: #aaa !important;
+    }
+
+
+
+
+    select.round {
+        background-image:
+            linear-gradient(45deg, transparent 50%, gray 50%),
+            linear-gradient(135deg, gray 50%, transparent 50%),
+            radial-gradient(#ddd 70%, transparent 72%);
+        background-position:
+            calc(100% - 20px) calc(1em + 2px),
+            calc(100% - 15px) calc(1em + 2px),
+            calc(100% - .5em) .5em;
+        background-size:
+            5px 5px,
+            5px 5px,
+            1.5em 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    select.round:focus {
+        background-image:
+            linear-gradient(45deg, white 50%, transparent 50%),
+            linear-gradient(135deg, transparent 50%, white 50%),
+            radial-gradient(gray 70%, transparent 72%);
+        background-position:
+            calc(100% - 15px) 1em,
+            calc(100% - 20px) 1em,
+            calc(100% - .5em) .5em;
+        background-size:
+            5px 5px,
+            5px 5px,
+            1.5em 1.5em;
+        background-repeat: no-repeat;
+        border-color: green;
+        outline: 0;
+    }
+
+
+
+
     .left {
         overflow: hidden;
         display: flex;
@@ -28,6 +72,7 @@
         animation-fill-mode: both;
         -webkit-animation-delay: 1s;
         animation-delay: 1s;
+        margin: 0 auto;
     }
 
     .right {
@@ -64,19 +109,19 @@
     }
 
     .form-control {
-        padding: .3rem .75rem;
+        padding: 0.40rem .780rem;
         border-radius: 25px;
     }
 
     label {
         padding-left: 10px;
-    font-size: 19px;
-}
+        font-size: 19px;
+    }
 
-::placeholder {
-    color: rgb(170, 170, 170) !important;
-}
-    
+    ::placeholder {
+        color: rgb(170, 170, 170) !important;
+    }
+
 
     .form>p {
         text-align: right;
@@ -128,13 +173,13 @@
     }
 
     .a1 {
-        -webkit-animation-delay: 2s;
-        animation-delay: 2s;
+        -webkit-animation-delay: 0.4s;
+        animation-delay: 0.4s;
     }
 
     .a2 {
-        -webkit-animation-delay: 2.1s;
-        animation-delay: 2.1s;
+        -webkit-animation-delay: 0.4s;
+        animation-delay: 0.4s;
     }
 
     .a3 {
@@ -153,8 +198,8 @@
     }
 
     .a6 {
-        -webkit-animation-delay: 2.5s;
-        animation-delay: 2.5s;
+        -webkit-animation-delay: 0.4s;
+        animation-delay: 0.4s;
     }
 
     @-webkit-keyframes move {
@@ -210,6 +255,32 @@
             width: 840px;
         }
     }
+
+
+
+    /*Mobile*/
+    @media (max-width: 767.98px) {
+
+        .left {
+            padding-top: 42px;
+            padding-bottom: 64px;
+            overflow: hidden;
+            /* display: grid; */
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            /* -webkit-animation-name: left; */
+            animation-name: auto;
+            /* -webkit-animation-duration: 1s; */
+            /* animation-duration: 1s; */
+            /* -webkit-animation-fill-mode: both; */
+            animation-fill-mode: both;
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 1s;
+            margin: 0 auto;
+        }
+
+    }
 </style>
 
 
@@ -220,43 +291,55 @@
             <h4 class="animation a2">Post about your visited places around Saudi</h4>
         </div>
 
-        <form class="form" method="POST" action="/post/add" >
+        <form class="form" method="POST" action="/post/add" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label>Title</label>
-                <input name="title" type="text" class="form-control" placeholder="Post Title">
+                <input name="title" type="text" class="form-control" placeholder="Post Title" required=""
+                    oninvalid="this.setCustomValidity('Please add post title')" oninput="setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label>Upload Image</label>
-                <input name="img" type="file" class="form-control" placeholder="Image">
+                <input name="img" type="file" class="form-control" placeholder="Image" required=""
+                    oninvalid="this.setCustomValidity('Please upload post image')" oninput="setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label>Caption</label>
-                <input name="caption" type="text" class="form-control" placeholder="Talk about your trip">
-             </div>
+                <input name="caption" type="text" class="form-control" placeholder="Talk about your trip" required=""
+                    oninvalid="this.setCustomValidity('Please add post caprion')" oninput="setCustomValidity('')">
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label>Location</label>
-                <input name="location" type="text" class="form-control" placeholder="Location url">
+                <input name="location" type="text" class="form-control" placeholder="Location url" required=""
+                    oninvalid="this.setCustomValidity('Please add post location')" oninput="setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label>City</label>
-                <input name="city" type="text" class="form-control" placeholder="city">
+                <select name="city" type="text" class="form-control round" placeholder="city" required=""
+                    oninvalid="this.setCustomValidity('Please select post city')" oninput="setCustomValidity('')">
+                    <option disabled selected>Select your city</option>
+                    <option value="riyadh">Riyadh</option>
+                    <option value="qassim">Qassim</option>
+                    <option value="yanbu">Yanbu</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>Rate</label>
-                <input name="rate" type="text" class="form-control" placeholder="Rate Place from 1 to 5">
+                <input name="rate" type="text" class="form-control" placeholder="Rate Place from 1 to 5" required=""
+                    oninvalid="this.setCustomValidity('Please post rating')" oninput="setCustomValidity('')">
             </div>
 
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Agree on <a href="#">Terms</a> and <a href="#">conditions</a></label></div>
-    <button type="submit" class="animation a6">Submit</button>
-</form>
-  </div>
-  <div class="right"></div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Agree on <a href="#">Terms</a> and <a
+                        href="#">conditions</a></label></div>
+            <button type="submit" class="animation a6" required>Submit</button>
+        </form>
+    </div>
+    <div class="right"></div>
 </div>

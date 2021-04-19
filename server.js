@@ -51,6 +51,7 @@ app.use('/', postRoute);
 app.use('/', profileRoute);
 
 
+
 // Setting view engine to ejs.
 // Node.js to look into the folder views for all ejs files
 app.set("view engine", "ejs");

@@ -4,9 +4,10 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true,
       },
-    img: {
+      img: {
         type: String,
-        default: '/uploads/images/1618764714110SaudiTrips.png',
+        default: '/uploads/images/1618870290021SaudiTrips (1).png',
+
       },
     caption: {
         type: String,
@@ -19,8 +20,8 @@ const postSchema = mongoose.Schema({
       },
     rate: String,
     isPublished: Boolean,
-    user: String,   
-}, 
+   
+},
 
 {
     timestamps: true // means createdAt and updatedAt  

@@ -11,6 +11,8 @@ router.use(methodOverride('_method'));
 
 // Import Model
 const Post = require("../models/Post");
+const User = require("../models/User");
+const { request } = require("express");
 
 // 1- FORM: Grab the form data from the form 
 router.use(express.urlencoded({extended: true}));
@@ -19,7 +21,7 @@ router.use(express.urlencoded({extended: true}));
 const storage = multer.diskStorage({
     //destination for files
     destination: function (request, file, callback) {
-      callback(null, '../uploads/images/');
+      callback(null, './public/uploads/images/');
     },
   
     //add back the extension
@@ -37,8 +39,6 @@ const upload = multer({
   });
 
 
-
-
 // HTTP GET - Load an Post Form
 router.get("/post/add", isLoggedIn,(req, res) => {
     res.render("post/add");
@@ -48,6 +48,7 @@ router.get("/post/add", isLoggedIn,(req, res) => {
 // HTTP POST - To add post 
 // HTTP POST - To add post
 router.post("/post/add", isLoggedIn,upload.single('img'), async(req, res) => {
+   //console.log(request.file);
     let post = new Post(req.body);
     // Save the data to the database
     post.save()
@@ -61,16 +62,34 @@ router.post("/post/add", isLoggedIn,upload.single('img'), async(req, res) => {
 })
 
 
+
+
 // HTTP GET - Post Index
 router.get("/post/index", (req, res) => {
     // Find all Post
-    Post.find()
+    //Post.find()
+    Post.find().populate(({ path: 'User', select: 'firstName' }))
     .then(post => {
         res.render("post/index", {post, moment});
     })
     .catch(err => {
         console.log(err);
     })
+
 })
+
+// // User show 
+// router.get("post/allpost",(req, res) =>{
+//   // Find all Post
+//   Post.find()
+//   .then(post => {
+//       res.render("post/index", {post, moment});
+//   })
+//   .catch(err => {
+//       console.log(err);
+//   })
+// })
+
+
 
 module.exports = router;
