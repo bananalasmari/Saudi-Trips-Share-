@@ -4,13 +4,13 @@ const passport = require('passport');
 
 
 const userSchema = mongoose.Schema({
-    firstName: [{
+    firstName: {
         type: String,
         required: true,
         minLength: [3, "First name must be more then 3 characters"],
         maxLength: [99, "This is too much man.... Chillll..."],
       
-    }],
+    },
     lastName: {
         type: String,
         required: true,
