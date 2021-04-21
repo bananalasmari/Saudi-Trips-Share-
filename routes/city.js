@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const City = require('../models/City')
 const isLoggedIn=require("../helper/isLoggedin")
+const Post = require("../models/Post");
+
 
 // all instractor
 router.get('city/index', (req, res) => {
@@ -19,7 +20,7 @@ router.get('/city/add', (req, res) => {
     res.render('city/add')
 })
 
-router.post('/city/add', (req, res) => {
+router.post('/add', (req, res) => {
 
     let newCity = new City(req.body)
 
@@ -28,17 +29,32 @@ router.post('/city/add', (req, res) => {
         .catch(err => res.send(err))
 })
 
-//show one instractor
-router.get('/city/:id', (req, res) => {
+//show 
+router.get('/:city', (req, res) => {
+    // City.findById(req.params.id).populate('posts')
+    //     .then(city => {
+    //         console.log(city)
+    //         res.render('city/show', { city })
+    //     })
+
+    // let city = req.params.city
+    // console.log(city)
+    // res.render("home/city",{city})
+    // Post.find(city)
+
+    Post.find({ city: { $ne: req.params.city} })
+    .then(city => {
+        res.render("home/city", {city});
+    })
+    .catch(err => {
+        console.log(err);
+    })
 
 
-    City.findById(req.params.id).populate('posts')
-        .then(city => {
-            console.log(city)
-            res.render('city/show', { city })
-        })
-
+   
 })
+
+
 
 
 

@@ -16,7 +16,9 @@ html, body {
 body {
     background-color: #f8f8f9 !important;
     font-family: 'Cabin', sans-serif;
-    min-height:100%; position:relative;
+    min-height:100%; 
+    position:relative;
+    margin-bottom: 50px;
 
 }
 
@@ -58,6 +60,10 @@ img {
 .carousel-inner{
     padding-bottom: 6.25vw;
 } 
+
+.carousel-item > img {
+    height: 22.1rem !important;
+}
 
 .btn-secondary {
     color: #f7f5f0;
@@ -140,25 +146,139 @@ img {
     height: 200px;
 }
 
+/**CARD-INDEX**/
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+
+     
+}
+
+.col-md-5 > img {
+    border-radius: 25px;
+}
+
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin-top:20px;
+     border-radius: 25px;
+}
+
+.card-index {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin-top:20px;
+    height: 270px;   
+     border-radius: 25px;
+     background-color: #fff;
+}
+
+.carousel-indicators li {
+    border-radius: 12px;
+    width: 12px;
+    height: 12px;
+    background-color: #404040;
+}
+.carousel-indicators li {
+    border-radius: 12px;
+    width: 12px;
+    height: 12px;
+    background-color: #404040;
+}
+.carousel-indicators .active {
+    background-color: white;
+    max-width: 12px;
+    margin: 0 3px;
+    height: 12px;
+}
+.carousel-control-prev-icon {
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+.py-3 {
+    padding-top: 7rem!important;
+    padding-bottom: 5rem!important;
+}
+
+.title {
+    margin-bottom: 50px;
+}
+
+.card-title {
+    color: #174d47;
+    margin-bottom: .5rem;
+    font-weight: 800;
+    font-size: 32px;
+}
+
+.carousel-item img {
+      width: 100px;
+}
+.text-center {
+    text-align: left !important;
+}
+ 
+.btn {
+  margin-top: auto;
+}
+
 
 .footer-txt {
     color: #fff
 }
 
 footer {
-    padding: 30px;
-    background-color: #184d47;
+    /* position: fixed; */
     height: 50px;
+   background: linear-gradient( 90deg, rgb(148 187 125) 0%, rgb(106 189 183) -3%, rgb(140 187 136) 90%, rgb(140 187 137) 101%, rgb(143 187 133) 100%);
     bottom: 0px;
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
+    padding: 80px;
+    margin-top: 30px;
+    position: relative;
 }
 
 footer a {
     color: #fff;
     text-decoration: none;
 
+
+}
+
+
+.FooterBack {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: .2;
+    background: url("/img/Riyadh-bg.jpeg") center center / cover no-repeat fixed;
 
 }
 
@@ -169,6 +289,14 @@ footer a {
 
  .nav-link {
     display: inline;
+}
+
+footer {
+    width: 512px;
+}
+
+.py-3 {
+    display: none;
 }
 
 }
@@ -183,6 +311,8 @@ footer a {
 .auth_botton {
     margin-inline-start: 41rem;
 }
-
 }
+
+
+
 

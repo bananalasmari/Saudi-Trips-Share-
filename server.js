@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require('path');
 const PORT = process.env.PORT;
 //main layuts
 const expresslayouts = require("express-ejs-layouts");
@@ -19,6 +20,7 @@ const indexRoute = require('./routes/index');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/post');
 const profileRoute = require('./routes/profile');
+const cityRoute = require('./routes/city');
 
 // Express Session and Passport
 let session = require('express-session');
@@ -49,6 +51,7 @@ app.use('/', indexRoute);
 app.use('/', authRoute);
 app.use('/', postRoute);
 app.use('/', profileRoute);
+app.use('/city/', cityRoute);
 
 
 

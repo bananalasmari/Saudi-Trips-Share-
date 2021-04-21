@@ -13,7 +13,7 @@ router.use(methodOverride('_method'));
 
 // Import Model
 const User = require("../models/User");
-
+const Post = require("../models/Post");
 
 // Route to user profile
 router.get('/user/profile', (req, res) => {
@@ -88,4 +88,14 @@ router.post('/user/changepassword', (req, res) => {
     });
 
 
+    // POST - ProfilePost
+    router.get('/post/profilePost', isLoggedIn, (req, res) => {
+        User.findById(req.user._id).populate("posts")
+            .then(user => {
+                res.render("post/profilePost", { user });
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    })
      module.exports = router;

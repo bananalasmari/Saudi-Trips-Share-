@@ -100,15 +100,15 @@ a, a:hover {
   border-radius: 50%;
 }
 .profile-card__cnt {
-  margin-top: -35px;
-  text-align: center;
-  padding: 0 20px;
-  padding-bottom: 40px;
-  transition: all 0.3s;
+    margin-top: 70px;
+    text-align: center;
+    padding: 0 20px;
+    padding-bottom: 40px;
+    transition: all 0.3s;
 }
 .profile-card__name {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 34px;
   color: #94bb7b;
   margin-bottom: 15px;
 }
@@ -385,35 +385,32 @@ a, a:hover {
   
 <div class="wrapper">
     <div class="profile-card js-profile-card" data-aos="fade-up">
-      <div class="profile-card__img">
-        <!-- <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537638518/Ba%C5%9Fl%C4%B1ks%C4%B1z-1.jpg" alt="profile card"> -->
-      </div>
+      <!-- <div class="profile-card__img">
+       <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537638518/Ba%C5%9Fl%C4%B1ks%C4%B1z-1.jpg" alt="profile card"> 
+      </div>  -->
   
       <div class="profile-card__cnt js-profile-cnt">
         <div class="profile-card__name"><%= user.firstName %> <%= user.lastName %></div>
         <div class="profile-card-loc">
-         
-          <span class="profile-card-loc__txt">
-            <i class="fas fa-map-marker-alt"></i>  <%= user.bio %>
-          </span>
         </div>
   
         <div class="profile-card-inf">
           <div class="profile-card-inf__item">
-            <div class="profile-card-inf__title">1598</div>
+            <div class="profile-card-inf__title"> <%= user.posts.length %></div>
             <div class="profile-card-inf__txt">Trips</div>
           </div>
   
-          <div class="profile-card-inf__item">
+          <!-- <div class="profile-card-inf__item">
             <div class="profile-card-inf__title">65</div>
             <div class="profile-card-inf__txt">Likes</div>
-          </div>
+          </div> -->
   
         </div>
   
         <div class="profile-card-ctr">
             <a href="../user/edit"> <button class="profile-card__button button--blue js-message-btn">Edit Profile</button> </a>
-            <a href="../post/index"><button class="profile-card__button button--orange">My Trips</button></a>
+            <a href="../manage"> <button class="profile-card__button button--blue js-message-btn" style="background: linear-gradient( 90deg, #26d63b 0%, #00bcd4 -3%, #00bcd4e0 90%, #00bcd4 101%, #00bcd4 100%);">Manage Post</button> </a>
+            <a href="../post/profilePost"><button class="profile-card__button button--orange">My Trips</button></a>
         </div>
       </div>
   

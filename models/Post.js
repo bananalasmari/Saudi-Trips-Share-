@@ -6,8 +6,7 @@ const postSchema = mongoose.Schema({
       },
       img: {
         type: String,
-        default: '/uploads/images/1618870290021SaudiTrips (1).png',
-
+        default: '/uploads/images/defult_logo.png',
       },
     caption: {
         type: String,
@@ -19,7 +18,11 @@ const postSchema = mongoose.Schema({
         required: true,
       },
     rate: String,
-    isPublished: Boolean,
+    date: Date,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+  },
    
 },
 

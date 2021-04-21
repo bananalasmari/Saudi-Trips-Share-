@@ -27,8 +27,14 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         minLength: [3, "Your password is too weak... Khalaaas"],
-    }
+    },
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
+
 },
+
 {
     timestamps: true // means createdAt and updatedAt
 });
