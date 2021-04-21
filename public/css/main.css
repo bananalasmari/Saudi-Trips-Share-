@@ -40,7 +40,7 @@ span {
 }
 
 .bg-dark {
-    background: linear-gradient( 90deg, rgb(23 77 71) 0%, rgb(149 187 123) -3%, rgb(106 188 185) 90%, rgb(104 190 179) 101%, rgb(106 188 185) 100%);
+    background: linear-gradient( 90deg, rgb(23 77 71) 0%, rgb(123 177 87) -3%, rgb(106 188 185) 90%, rgb(104 190 179) 101%, rgb(106 188 185) 100%);
 }
 
 img {
@@ -249,7 +249,7 @@ img {
 footer {
     /* position: fixed; */
     height: 50px;
-   background: linear-gradient( 90deg, rgb(148 187 125) 0%, rgb(106 189 183) -3%, rgb(140 187 136) 90%, rgb(140 187 137) 101%, rgb(143 187 133) 100%);
+   background: linear-gradient( 90deg, rgb(23 77 71) 0%, rgb(123 177 87) -3%, rgb(106 188 185) 90%, rgb(104 190 179) 101%, rgb(106 188 185) 100%);
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -295,9 +295,12 @@ footer {
     width: 512px;
 }
 
-.py-3 {
-    display: none;
+.container {
+    display: inherit;
 }
+
+.card-index {
+    height: 493px;}
 
 }
 

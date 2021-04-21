@@ -23,48 +23,48 @@ router.get('/user/profile', (req, res) => {
             res.render("user/profile", { user, moment });
         })
         .catch(err => {
-            console.log(err);   
+            console.log(err);
         });
-        //res.redirect("/");
-    });
+    // res.redirect("/");
+});
 
 
 
 
 // Change Password Route - GET
-router.get ('/user/edit', isLoggedIn, (req,res) => {
+router.get('/user/edit', isLoggedIn, (req, res) => {
     //console.log(req.user._id)
     User.findById(req.user._id)
         .then(user => {
-            if (!user){
+            if (!user) {
                 return res.redirect("/");
-            }   
+            }
             res.render("user/edit", { user, moment });
         })
         .catch(err => {
-            console.log(err);   
+            console.log(err);
         });
-        //res.redirect("/");
+    //res.redirect("/");
 
 })
 
 
 
 // Edit Profile Route - POST
-router.post("/user/profile", (req, res) =>{
-    let query = {_id: req.body.id}
+router.post("/user/profile", (req, res) => {
+    let query = { _id: req.body.id }
     var data = {
         $set: req.body
     }
     console.log(data)
-    User.findByIdAndUpdate(query,data,{new: true})
-    .then(() =>{
-        res.redirect("/user/profile")
-        console.log(query)
-    })
-    .catch(err =>{
-        console.log(err)
-    })
+    User.findByIdAndUpdate(query, data, { new: true })
+        .then(() => {
+            res.redirect("/user/profile")
+            console.log(query)
+        })
+        .catch(err => {
+            console.log(err)
+        })
 })
 
 
@@ -72,30 +72,33 @@ router.post("/user/profile", (req, res) =>{
 router.post('/user/changepassword', (req, res) => {
     console.log("test user")
     console.log(req.body.id)
-    console.log(req.body.password+"password test")
+    console.log(req.body.password + "password test")
     //User.findById(req.user._id)
     let hash = bcrypt.hashSync(req.body.password, salt);
     console.log(hash);
     //user.password = hash;
-    const userPassword=User.findByIdAndUpdate((req.body.id),{password:hash},{new:true})
+    const userPassword = User.findByIdAndUpdate((req.body.id), { password: hash }, { new: true })
         .then(user => {
             res.render("user/profile", { user });
         })
         .catch(err => {
             console.log(err);
         });
-        //res.redirect("/");
-    });
+    //res.redirect("/");
+});
 
 
-    // POST - ProfilePost
-    router.get('/post/profilePost', isLoggedIn, (req, res) => {
-        User.findById(req.user._id).populate("posts")
-            .then(user => {
-                res.render("post/profilePost", { user });
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    })
-     module.exports = router;
+// POST - ProfilePost
+router.get('/post/profilePost', isLoggedIn, (req, res) => {
+    User.findById(req.user._id).populate("posts")
+        .then(user => {
+            res.render("post/profilePost", { user });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+
+
+module.exports = router;

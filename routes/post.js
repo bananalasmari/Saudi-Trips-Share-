@@ -16,7 +16,7 @@ const User = require("../models/User");
 const { request } = require("express");
 
 // 1- FORM: Grab the form data from the form 
-router.use(express.urlencoded({extended: true}));
+router.use(express.urlencoded({ extended: true }));
 
 
 // // Multer setup
@@ -32,29 +32,29 @@ router.use(express.urlencoded({extended: true}));
 
 // const upload = multer({storage: storage})
 
-router.get("/post/add", isLoggedIn,(req, res) => {
+router.get("/post/add", isLoggedIn, (req, res) => {
     User.findById(req.user._id).then(user => {
-      res.render("post/add",{user});
-  })
-  })
-  // 2- FORM:  HTTP POST - To post the Post
-  // HTTP POST - To add post
-  // HTTP POST - To add post
-  router.post("/post/add", isLoggedIn,(req, res) => {
-      let post = new Post(req.body);
-      post.save()
-      .then((post) => {
-        User.findByIdAndUpdate(req.user._id, {  $push: { posts: post }})
-  .then(()=>{
-          res.redirect("/post/index");
-      })
-      .catch((err) => {
-          console.log(err);
-          res.send("ERROR!!!");
-      })
-  })
-  });
-  
+        res.render("post/add", { user });
+    })
+})
+// 2- FORM:  HTTP POST - To post the Post
+// HTTP POST - To add post
+// HTTP POST - To add post
+router.post("/post/add", isLoggedIn, (req, res) => {
+    let post = new Post(req.body);
+    post.save()
+        .then((post) => {
+            User.findByIdAndUpdate(req.user._id, { $push: { posts: post } })
+                .then(() => {
+                    res.redirect("/post/index");
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.send("ERROR!!!");
+                })
+        })
+});
+
 // // HTTP GET - Load an Post Form
 // router.get("/post/add",isLoggedIn,(req, res) => {
 //     res.render("post/add");
@@ -83,26 +83,29 @@ router.get("/post/index", (req, res) => {
     // Find all Post
     //Post.find()
     Post.find().populate(({ path: 'User' }))
-    .then(post => {
-        res.render("post/index", {post, moment});
-    })
-    .catch(err => {
-        console.log(err);
-    })
-    
+        .then(post => {
+            res.render("post/index", { post, moment });
+        })
+        .catch(err => {
+            console.log(err);
+            res.send("ERROR!!!");
+        })
+
 })
 
 
 // HTTP GET - GET Manage
-router.get('/manage', isLoggedIn,(req, res) => {
-    Post.find()
-    .then((post) => {
-        console.log(post)
-        res.render('post/manage', { post: post, moment: moment })
-
-    }).catch(err => res.send(err))
-
+router.get('/manage', isLoggedIn, (req, res) => {
+    User.findById(req.user._id).populate("posts")
+        .then(user => {
+            res.render("post/manage", { user });
+        })
+        .catch(err => {
+            console.log(err);
+        })
 })
+
+
 
 //POST - EDIT
 router.post("/post/edit", (req, res) => {
@@ -112,8 +115,6 @@ router.post("/post/edit", (req, res) => {
                 .then(user => {
                     res.render("post/edit", { post: post, moment: moment, user })
                 })
-
-
         })
         .catch(err => {
             console.log(err)
@@ -126,15 +127,15 @@ router.put("/post/edit", (req, res) => {
         $set: req.body
     }
 
-    Post.findByIdAndUpdate(query, data, { useFindAndModify: false })  
-    .then((post) => {
-      User.findByIdAndUpdate(post.user,
-            { $pull: { user: post._id } })
-            .then(() => {
-            User.findByIdAndUpdate(req.body.user,
-                { $addToSet: { post:post } })
+    Post.findByIdAndUpdate(query, data, { useFindAndModify: false })
+        .then((post) => {
+            User.findByIdAndUpdate(post.user,
+                { $pull: { user: post._id } })
                 .then(() => {
-                  
+                    User.findByIdAndUpdate(req.body.user,
+                        { $addToSet: { post: post } })
+                        .then(() => {
+
                             res.redirect('/manage')
                         })
                 })
@@ -146,21 +147,34 @@ router.put("/post/edit", (req, res) => {
 })
 
 
-// DElETE 
-router.delete("/post/delete",(req, res) => {
+// DElETE Route
+router.delete("/post/delete", (req, res) => {
     Post.findByIdAndDelete(req.query.id)
-    .then(()=>{
-        res.redirect("/post/index");
+        .then(() => {
+            res.redirect("/post/index");
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+
+/// About us route
+router.get("/aboutus", (req, res) => {
+    res.render("home/aboutus")
+})
+
+
+// Details Post Route
+router.get("/post/detail", (req, res) => {
+    console.log(req.query.id);
+    Post.findById(req.query.id)
+    .then(post => {
+        res.render("post/detail", {post : post , moment});
     })
     .catch(err => {
         console.log(err);
     })
-  })
-
-
-/// About us route
-router.get("/aboutus", (req,res) => {
-    res.render("home/aboutus")
 })
 
 

@@ -294,43 +294,52 @@
         <form class="form" method="POST" action="/post/edit?id=<%= post._id %>&_method=PUT">
             <div class="form-group">
                 <label>Title</label>
-                <input name="title"  vlaue="<%= post.title %>" type="text" class="form-control" placeholder="Post Title" required=""
-                    oninvalid="this.setCustomValidity('Please add post title')" oninput="setCustomValidity('')">
+                <input name="title" vlaue="<%= post.title %>" type="text" class="form-control" placeholder="Post Title"
+                    required="" oninvalid="this.setCustomValidity('Please add post title')"
+                    oninput="setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label>Upload Image</label>
-                <input name="img" vlaue="<%= post.img %>" type="text" class="form-control"  placeholder="Image URL" required=""
-                    oninvalid="this.setCustomValidity('Please upload post image')" oninput="setCustomValidity('')">
+                <input name="img" vlaue="<%= post.img %>" type="text" class="form-control" placeholder="Image URL"
+                    required="" oninvalid="this.setCustomValidity('Please upload post image')"
+                    oninput="setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label>Caption</label>
-                <input name="caption" type="text" vlaue="<%= post.caption %>" class="form-control" maxlength = "30" placeholder="Talk about your trip" required=""
+                <input name="caption" type="text" vlaue="<%= post.caption %>" class="form-control" maxlength="30"
+                    placeholder="Talk about your trip" required=""
                     oninvalid="this.setCustomValidity('Please add post caprion')" oninput="setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label>Location</label>
-                <input name="location" type="url" vlaue="<%= post.location %>" class="form-control" placeholder="Location url" required=""
+                <input name="location" type="url" vlaue="<%= post.location %>" class="form-control"
+                    placeholder="Location url" required=""
                     oninvalid="this.setCustomValidity('Please add post location')" oninput="setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label>City</label>
-                <select name="city" type="text" vlaue="<%= post.city %>" class="form-control round" placeholder="city" required=""
-                    oninvalid="this.setCustomValidity('Please select post city')" oninput="setCustomValidity('')">
+                <select name="city" type="text" vlaue="<%= post.city %>" class="form-control round" placeholder="city"
+                    required="" oninvalid="this.setCustomValidity('Please select post city')"
+                    oninput="setCustomValidity('')">
                     <option disabled selected>Select your city</option>
                     <option value="Riyadh">Riyadh</option>
                     <option value="Qassim">Qassim</option>
                     <option value="Yanbu">Yanbu</option>
                 </select>
             </div>
+            
+            <textarea name="desription" class="form-control" maxlength="200" placeholder="Add your review" required=""
+            oninvalid="this.setCustomValidity('Please add post location')" oninput="setCustomValidity('')"></textarea>
 
             <div class="form-group">
                 <label>Rate</label>
-                <select name="rate" type="text" vlaue="<%= post.rate %>" class="form-control round" placeholder="city" required=""
-                    oninvalid="this.setCustomValidity('Please select a trip rate')" oninput="setCustomValidity('')">
+                <select name="rate" type="text" vlaue="<%= post.rate %>" class="form-control round" placeholder="city"
+                    required="" oninvalid="this.setCustomValidity('Please select a trip rate')"
+                    oninput="setCustomValidity('')">
                     <option disabled selected>Rate your trip</option>
                     <option value="⭐️">⭐️</option>
                     <option value="⭐️⭐️">⭐️⭐️</option>
@@ -345,7 +354,7 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Agree on <a href="#">Terms</a> and <a
                         href="#">conditions</a></label></div>
-                 
+
             <button type="submit" class="animation a6" value="upload" required>Submit</button>
         </form>
     </div>

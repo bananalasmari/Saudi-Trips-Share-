@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const isLoggedIn=require("../helper/isLoggedin")
+const isLoggedIn = require("../helper/isLoggedin")
 const Post = require("../models/Post");
 
 
@@ -42,20 +42,17 @@ router.get('/:city', (req, res) => {
     // res.render("home/city",{city})
     // Post.find(city)
 
-    Post.find({ city: { $ne: req.params.city} })
-    .then(city => {
-        res.render("home/city", {city});
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    Post.find({ city: { $ne: req.params.city } })
+        .then(city => {
+            res.render("home/city", { city });
+        })
+        .catch(err => {
+            console.log(err);
+        })
 
 
-   
+
 })
-
-
-
 
 
 module.exports = router;

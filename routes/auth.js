@@ -29,10 +29,11 @@ router.post("/auth/signup", (req, res) => {
   user
     .save()
     .then(() => {
-    //   res.redirect("/");
-    passport.authenticate("local", { 
-        successRedirect: "/",  
-        failureRedirect: "/auth/signin" })(req, res)
+      //   res.redirect("/");
+      passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/auth/signin"
+      })(req, res)
     })
     .catch((err) => {
       console.log(err);
@@ -48,16 +49,17 @@ router.get("/auth/signin", (req, res) => {
 // HTTP POST - Signin Route - To login the user
 router.post(
   "/auth/signin",
-  passport.authenticate("local", { 
-    successRedirect: "/",  
-    failureRedirect: "/auth/signin" })
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/auth/signin"
+  })
 );
 
 // HTTP GET - Logout Route
 router.get("/auth/logout", (req, res) => {
-    req.logout();
-    req.flash("error", "You are logged out successfully.");
-    res.redirect("/auth/signin");
+  req.logout();
+  req.flash("error", "You are logged out successfully.");
+  res.redirect("/auth/signin");
 })
 
 // HTTP GET - Load Profile
