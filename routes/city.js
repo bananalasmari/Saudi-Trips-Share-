@@ -4,7 +4,7 @@ const isLoggedIn = require("../helper/isLoggedin")
 const Post = require("../models/Post");
 
 
-// all instractor
+// City Route
 router.get('city/index', (req, res) => {
     Instractor.find()
         .then(cities => {
@@ -14,34 +14,22 @@ router.get('city/index', (req, res) => {
 
 })
 
-// add instractor page 
+// City Add Route - GET
 router.get('/city/add', (req, res) => {
-
     res.render('city/add')
 })
 
+// City Add Route - POST
 router.post('/add', (req, res) => {
-
     let newCity = new City(req.body)
-
     newCity.save()
         .then(() => res.redirect('/manage'))
         .catch(err => res.send(err))
 })
 
-//show 
+
+// City Show Route
 router.get('/:city', (req, res) => {
-    // City.findById(req.params.id).populate('posts')
-    //     .then(city => {
-    //         console.log(city)
-    //         res.render('city/show', { city })
-    //     })
-
-    // let city = req.params.city
-    // console.log(city)
-    // res.render("home/city",{city})
-    // Post.find(city)
-
     Post.find({ city: { $ne: req.params.city } })
         .then(city => {
             res.render("home/city", { city });
@@ -49,9 +37,6 @@ router.get('/:city', (req, res) => {
         .catch(err => {
             console.log(err);
         })
-
-
-
 })
 
 

@@ -1,10 +1,8 @@
-// All our Article related routes will go here in this file
 const express = require("express");
-const router = express.Router(); // Package 
+const router = express.Router(); 
 const moment = require('moment');
 const bcrypt = require("bcrypt");
 const salt = 10;
-const multer = require('multer'); // Uploading images
 var methodOverride = require('method-override');
 const isLoggedIn = require("../helper/isLoggedIn");
 
@@ -25,10 +23,7 @@ router.get('/user/profile', (req, res) => {
         .catch(err => {
             console.log(err);
         });
-    // res.redirect("/");
 });
-
-
 
 
 // Change Password Route - GET
@@ -73,10 +68,8 @@ router.post('/user/changepassword', (req, res) => {
     console.log("test user")
     console.log(req.body.id)
     console.log(req.body.password + "password test")
-    //User.findById(req.user._id)
     let hash = bcrypt.hashSync(req.body.password, salt);
     console.log(hash);
-    //user.password = hash;
     const userPassword = User.findByIdAndUpdate((req.body.id), { password: hash }, { new: true })
         .then(user => {
             res.render("user/profile", { user });
@@ -84,7 +77,6 @@ router.post('/user/changepassword', (req, res) => {
         .catch(err => {
             console.log(err);
         });
-    //res.redirect("/");
 });
 
 

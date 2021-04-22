@@ -1,9 +1,6 @@
-// All our related routes will go here in this file
 const express = require("express");
 const router = express.Router(); // Package 
 const moment = require('moment');
-// const multer = require('multer'); // Uploading images
-// const path = require('path');
 var methodOverride = require('method-override');
 const isLoggedIn = require("../helper/isLoggedIn");
 
@@ -19,26 +16,14 @@ const { request } = require("express");
 router.use(express.urlencoded({ extended: true }));
 
 
-// // Multer setup
-// const storage = multer.diskStorage({
-//   destination: (req, file, callback) => {
-//       callback(null, './public/uploads/images')
-//   },
-//   filename: (req, file, callback) => {
-//     console.log(file)
-//     callback(null, Date.now() + path.extname(file.originalname))
-//   }
-// });
-
-// const upload = multer({storage: storage})
-
+// POST Add Route - GET
 router.get("/post/add", isLoggedIn, (req, res) => {
     User.findById(req.user._id).then(user => {
         res.render("post/add", { user });
     })
 })
+
 // 2- FORM:  HTTP POST - To post the Post
-// HTTP POST - To add post
 // HTTP POST - To add post
 router.post("/post/add", isLoggedIn, (req, res) => {
     let post = new Post(req.body);
@@ -55,33 +40,11 @@ router.post("/post/add", isLoggedIn, (req, res) => {
         })
 });
 
-// // HTTP GET - Load an Post Form
-// router.get("/post/add",isLoggedIn,(req, res) => {
-//     res.render("post/add");
-// })
-
-// // 2- FORM:  HTTP POST - To post the Post 
-// router.post("/post/add", isLoggedIn,(req, res) => {
-//     let post = new Post(req.body)
-//     // res.redirect("/post/index");
-//     // // Save the data to the database
-//     post.save()
-//     .then(() => {
-//        res.redirect("/post/index");
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//         res.send("ERROR!!!");
-//     })
-// })
-
 
 
 
 // HTTP GET - Post Index
 router.get("/post/index", (req, res) => {
-    // Find all Post
-    //Post.find()
     Post.find().populate(({ path: 'User' }))
         .then(post => {
             res.render("post/index", { post, moment });
@@ -121,6 +84,8 @@ router.post("/post/edit", (req, res) => {
         })
 })
 
+
+// Edit Add Route - POST
 router.put("/post/edit", (req, res) => {
     let query = { _id: req.query.id }
     var data = {
@@ -147,7 +112,7 @@ router.put("/post/edit", (req, res) => {
 })
 
 
-// DElETE Route
+// Delete Route 
 router.delete("/post/delete", (req, res) => {
     Post.findByIdAndDelete(req.query.id)
         .then(() => {
@@ -165,7 +130,7 @@ router.get("/aboutus", (req, res) => {
 })
 
 
-// Details Post Route
+// Detail Route - GET
 router.get("/post/detail", (req, res) => {
     console.log(req.query.id);
     Post.findById(req.query.id)

@@ -1,16 +1,13 @@
-// All my authentication routes will go here
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const salt = 10;
 var bodyParser = require('body-parser')
-// Import passport configurations
 let passport = require("../helper/ppConfig");
 
 // Import User Model
 const User = require("../models/User");
 
 router.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
 router.use(bodyParser.json())
 
 // HTTP GET - Signup Route - To load the signup form
@@ -61,11 +58,5 @@ router.get("/auth/logout", (req, res) => {
   req.flash("error", "You are logged out successfully.");
   res.redirect("/auth/signin");
 })
-
-// HTTP GET - Load Profile
-
-// HTTP GET - Change Password
-
-// HTTP POST - Change Password
 
 module.exports = router;

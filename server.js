@@ -2,11 +2,10 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require('path');
-const PORT = process.env.PORT || 4001; 
+const PORT = process.env.PORT || 4003; 
 const expresslayouts = require("express-ejs-layouts");
 var flash = require('connect-flash');
 const app = express();
-// Look into the views folder for layout.ejs file
 app.use(expresslayouts);
 
 
@@ -53,8 +52,6 @@ app.use('/city/', cityRoute);
 
 
 
-// Setting view engine to ejs.
-// Node.js to look into the folder views for all ejs files
 app.set("view engine", "ejs");
 
 mongoose.connect(
@@ -68,9 +65,6 @@ mongoose.connect(
   }
 );
 
-// app.listen(PORT, () => {
-//   console.log(`Running on PORT  ${PORT}`);
-// });
 
 app.listen(PORT, () => {
   console.log(`✅ PORT: ${PORT} 🌟`)
